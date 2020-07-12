@@ -4,8 +4,8 @@ import Home from '../views/menu/Home.vue'
 import Dashboard from '../views/home/Dashboard.vue'
 import HomePage from '../views/home/HomePage.vue'
 
-import Order from '../views/order/Order.vue'
-import UserManger from '../views/userManger/UserManger.vue'
+// import Order from '../views/order/Order.vue'
+// import UserManger from '../views/userManger/UserManger.vue'
 // import Dashboard from '../views/Dashboard.vue'
 
 Vue.use(VueRouter)
@@ -15,26 +15,42 @@ const routes = [
     path: '/',
     // name: 'Home',
     component: Home,
+    meta: {
+      title: '首页'
+    },
     children: [
       {
         path: '/dashboard',
         name: 'dashboard',
+        meta: {
+          title: '仪表盘'
+        },
         component: Dashboard
       },
       {
         path: '/homePage',
         name: 'homePage',
+        meta: {
+          title: '首页详情'
+        },
         component: HomePage
       },
       {
         path: '/order',
         name: 'order',
-        component: Order
+        meta: {
+          title: '订票详情'
+        },
+        component: () => import('../views/order/Order.vue')
       },
       {
         path: '/userManger',
         name: 'userManger',
-        component: UserManger
+        meta: {
+          title: '用户管理'
+        },
+        // component: UserManger
+        component: () => import('@/views/userManger/UserManger.vue')
       }
     ]
   },

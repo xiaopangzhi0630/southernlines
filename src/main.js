@@ -13,3 +13,9 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+// 路由对应的title
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title;
+  next()
+})
