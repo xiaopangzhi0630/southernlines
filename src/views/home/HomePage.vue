@@ -1,12 +1,24 @@
 <template>
   <div class="pagehome">
-    ajkshdkjajd
+    pagehome---yemian
+    <br />
+    <br />
+    <br />
+    <div>
+
+      <!-- {{this.$store.state.count}} -->
+      <button @click="min">-</button><button @click="add">+</button>
+    </div>
   </div>
 </template>
 
 <script>
-  // @ is an alias to /src
-  // import HelloWorld from '@/components/HelloWorld.vue'
+  import {
+    mapState,
+    mapActions,
+    mapGetters,
+    mapMutations
+  } from 'vuex';
 
   export default {
     // name: 'Home',
@@ -16,6 +28,37 @@
 
       }
     },
+
+    created() {
+      console.log(this.$store);
+    },
+
+    computed: {
+      // ...mapState('homePageStore', ['count'])
+    },
+
+    methods: {
+
+      min() {
+        console.log('---');
+        // this.$Store.commit('handleMin')
+      },
+
+      add() {
+        // console.log(111);
+        // this.$store.commit('increment')
+        // console.log(this.$store.state.count)
+        this.$store.dispatch('HomePageStore/handleAdd')
+      console.log(this.$store.state.HomePageStore.count);
+     
+     },
+
+      // ...mapMutations('homePageStore', ['handleAdd'])
+
+
+    }
+
+
 
 
   }

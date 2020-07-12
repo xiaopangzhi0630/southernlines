@@ -23,7 +23,8 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: 'login',
+    // redirect: 'login',
+    // redirect: 'login',
     component: Home,
     meta: {
       title: '首页'

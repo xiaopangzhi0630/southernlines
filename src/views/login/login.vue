@@ -74,8 +74,6 @@
   .btn {
     width: 400px;
     text-align: center;
-    ;
-
   }
 
 </style>
