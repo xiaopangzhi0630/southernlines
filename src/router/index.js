@@ -11,9 +11,19 @@ import HomePage from '../views/home/HomePage.vue'
 Vue.use(VueRouter)
 
 const routes = [
+
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: '登录'
+    },
+    component: () => import('../views/login/login.vue')
+  },
   {
     path: '/',
-    // name: 'Home',
+    name: 'home',
+    redirect: 'login',
     component: Home,
     meta: {
       title: '首页'

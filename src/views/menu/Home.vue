@@ -89,6 +89,9 @@
       // 退出登录
       logout() {
         console.log('tuichu');
+        this.$router.push({
+          path: '/login'
+        })
       },
 
       handleOpen(key, keyPath) {
@@ -156,7 +159,7 @@
       height: 100%;
       // width: 200px;
       // background-color: rgba(0.5, 0.5, 0.5, 0.1);
-     
+
     }
 
     .main {
