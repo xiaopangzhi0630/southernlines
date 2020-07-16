@@ -1,12 +1,9 @@
 <template>
   <div class="isComponent">
-    父组件index
-    <div>---------------</div>
+    <!-- 父组件index -->
+    <!-- <div>---------------</div> -->
 
-    <component 
-      :is="curComponent" 
-      @to="handleTo"
-    />
+    <component :is="curComponent" @to="handleTo" />
 
 
   </div>
@@ -29,8 +26,10 @@
     },
 
     methods: {
-      handleTo() {
-        
+      handleTo(target) {
+        console.log(target);
+        // console.log( this[`handleTo${target}`](options));
+        this.curComponent = `${target}`
       }
     }
 
@@ -42,6 +41,7 @@
   .isComponent {
     height: 100%;
     background: #ffffff;
+    overflow: hidden;
   }
 
 </style>
