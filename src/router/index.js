@@ -76,10 +76,30 @@ const routes = [
         path: '/isComponent',
         name: 'isComponent',
         meta: {
-          title: '动态组件'
+          title: '动态组件',
+          keepAlive: true
         },
         // component: UserManger
         component: () => import('@/views/isComponent/index.vue')
+      },
+      {
+        path: '/isKeepAlive',
+        name: 'isKeepAlive',
+        meta: {
+          title: '缓存组件',
+          keepAlive: true
+        },
+        // component: UserManger
+        component: () => import('@/views/isKeepAlive/Table.vue')
+      },
+      {
+        path: '/keepAliveDetail',
+        name: 'keepAliveDetail',
+        meta: {
+          title: '列表详情'
+        },
+        // component: UserManger
+        component: () => import('@/views/isKeepAlive/Detail.vue')
       }
     ]
   },

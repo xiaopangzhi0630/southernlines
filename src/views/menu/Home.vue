@@ -8,10 +8,10 @@
         <el-radio-button :label="false">收起</el-radio-button>
       </el-radio-group> -->
       <div class="isCollapse" @click="isShowMenu">
-        <i class="el-icon-s-operation"></i>
+        <i :class="isCollapse ? 'el-icon-s-unfold': 'el-icon-s-fold' "></i>
       </div>
-
-      <!-- <img src="@/assets/images/logo.png" alt="图片加载失败" class="loginImg" /> -->
+      <img src="@/assets/images/logo.png" alt="图片加载失败" class="loginImg" @click="handleLogo" />
+      <!-- <h2 style="width: 300px;  margin-left: 50px; display: inline-block;" @click="handleLogo">南航后台管理系统</h2> -->
 
       <div class="userMsg">
         <span>admin</span>
@@ -47,14 +47,21 @@
               <span slot="title">用户管理</span>
             </template>
             <el-menu-item index="userManger">用户权限</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-            <el-menu-item index="3-3">选项3</el-menu-item>
           </el-submenu>
 
-          <el-menu-item index="isComponent">
+          <el-menu-item @click="handleReset" index="isComponent">
             <i class="el-icon-setting"></i>
             <span slot="title">动态组件</span>
           </el-menu-item>
+
+
+          <el-submenu index="4">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span slot="title">缓存组件</span>
+            </template>
+            <el-menu-item index="isKeepAlive">列表页</el-menu-item>
+          </el-submenu>
 
         </el-menu>
 
@@ -66,7 +73,8 @@
           <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
 
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
+        <router-view v-if="!$route.meta.keepAlive && isReset"></router-view>
+        <!-- <router-view></router-view> -->
 
       </div>
 
@@ -84,7 +92,8 @@
 
     data() {
       return {
-        isCollapse: false
+        isCollapse: false,
+        isReset: true
       }
     },
 
@@ -105,6 +114,12 @@
         })
       },
 
+      handleLogo() {
+         this.$router.push({
+          path: '/'
+        })
+      },
+
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
       },
@@ -113,8 +128,21 @@
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
-        
+        this.isReset = false
+        this.$nextTick(function () {
+          this.isReset = true; //再打开
+        })
+
       },
+
+      handleReset() {
+        console.log(11111);
+        // this.isReset = false
+        // this.$nextTick(function () {
+        //   this.isReset = true; //再打开
+        // })
+      },
+
       // 菜单栏展开与收缩
       isShowMenu() {
         console.log(this.isCollapse);
@@ -141,7 +169,7 @@
   .header {
     height: 60px;
     line-height: 60px;
-    border-bottom: 2px solid #cccccc;
+    border-bottom: 2px solid #cccccc69;
     box-sizing: border-box;
 
     .loginImg {
