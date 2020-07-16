@@ -23,7 +23,7 @@
       <!-- 菜单栏 -->
       <div class="aside">
         <el-menu default-active="1-1" class="el-menu-vertical-demo" :unique-opened=true :router=true @open="handleOpen"
-          @close="handleClose" :collapse="isCollapse">
+          @close="handleClose" :collapse="isCollapse" @select="handleSelect">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
@@ -106,12 +106,15 @@
       },
 
       handleOpen(key, keyPath) {
-        // console.log(key, keyPath);
+        console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        // console.log(key, keyPath);
+        console.log(key, keyPath);
       },
-
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+        
+      },
       // 菜单栏展开与收缩
       isShowMenu() {
         console.log(this.isCollapse);

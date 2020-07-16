@@ -25,6 +25,21 @@
       FormCreate
     },
 
+    mounted() {
+      console.log('初始化');
+      console.log(this.$route.path);
+    },
+
+    watch: {
+      $route: {
+        handler: function (val, oldVal) {
+          console.log(val);
+        },
+        // 深度观察监听
+        deep: true
+      }
+    },
+
     methods: {
       handleTo(target) {
         console.log(target);
@@ -41,7 +56,7 @@
   .isComponent {
     height: 100%;
     background: #ffffff;
-    overflow: hidden;
+    overflow: auto;
   }
 
 </style>
