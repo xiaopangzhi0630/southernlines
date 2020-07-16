@@ -11,7 +11,7 @@
         <i class="el-icon-s-operation"></i>
       </div>
 
-      <img src="@/assets/images/logo.png" alt="图片加载失败" class="loginImg" />
+      <!-- <img src="@/assets/images/logo.png" alt="图片加载失败" class="loginImg" /> -->
 
       <div class="userMsg">
         <span>admin</span>
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="container clearfix">
+    <div class="container">
       <!-- 菜单栏 -->
       <div class="aside">
         <el-menu default-active="1-1" class="el-menu-vertical-demo" :unique-opened=true :router=true @open="handleOpen"
@@ -47,16 +47,27 @@
               <span slot="title">用户管理</span>
             </template>
             <el-menu-item index="userManger">用户权限</el-menu-item>
-            <!-- <el-menu-item index="3-2">选项2</el-menu-item>
-            <el-menu-item index="3-3">选项3</el-menu-item> -->
+            <el-menu-item index="3-2">选项2</el-menu-item>
+            <el-menu-item index="3-3">选项3</el-menu-item>
           </el-submenu>
+
+          <el-menu-item index="isComponent">
+            <i class="el-icon-setting"></i>
+            <span slot="title">动态组件</span>
+          </el-menu-item>
 
         </el-menu>
 
       </div>
       <!-- 内容区域 -->
       <div class="main">
-        <router-view></router-view>
+        <!-- 缓存组件 -->
+        <keep-alive>
+          <router-view v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
+
       </div>
 
     </div>
@@ -95,10 +106,10 @@
       },
 
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
 
       // 菜单栏展开与收缩
@@ -116,7 +127,7 @@
 
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .home {
     width: 100%;
     min-width: 600px;
@@ -150,28 +161,35 @@
     }
   }
 
+  // 主体部分
   .container {
     height: calc(100vh - 60px);
 
     // box-sizing: border-box;
+    // 菜单栏
     .aside {
       float: left;
       height: 100%;
+      overflow: auto;
       // width: 200px;
       // background-color: rgba(0.5, 0.5, 0.5, 0.1);
 
     }
 
+    // 内容区域
     .main {
       height: 100%;
-      margin-left: 200px;
+      // margin-left: 200px;
+      margin-left: 65px;
+      overflow: hidden;
       padding: 20px;
       box-sizing: border-box;
-      background-color: gainsboro;
-      //  background-color: #7bbfea;
+      background-color: #cccccc47;
+      //  background-color: #fff;
     }
   }
 
+  // 显示与隐藏
   .isCollapse {
     position: relative;
     width: 30px;
@@ -220,7 +238,5 @@
   .clearfix {
     *zoom: 1
   }
-
-  ;
 
 </style>

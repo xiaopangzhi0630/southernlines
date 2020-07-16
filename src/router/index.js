@@ -50,9 +50,18 @@ const routes = [
         path: '/order',
         name: 'order',
         meta: {
-          title: '订票详情'
+          title: '订票详情',
+          keepAlive: true
         },
         component: () => import('../views/order/Order.vue')
+      },
+      {
+        path: '/orderList',
+        name: 'OrderList',
+        meta: {
+          title: '订票详情'
+        },
+        component: () => import('../views/order/OrderList.vue')
       },
       {
         path: '/userManger',
@@ -62,6 +71,15 @@ const routes = [
         },
         // component: UserManger
         component: () => import('@/views/userManger/UserManger.vue')
+      },
+      {
+        path: '/isComponent',
+        name: 'isComponent',
+        meta: {
+          title: '动态组件'
+        },
+        // component: UserManger
+        component: () => import('@/views/isComponent/index.vue')
       }
     ]
   },

@@ -56,13 +56,11 @@
       }
     },
 
-
     methods: {
       handleClick(row) {
         console.log(row);
       }
     },
-
 
   }
 
@@ -71,8 +69,9 @@
 
 <style lang="less" scoped>
   .dashboard {
-    width: 100%;
+    // width: 100%;
     height: 100%;
+    overflow: auto;
     background: #ffffff;
   }
 
